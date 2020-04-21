@@ -16,6 +16,7 @@ public class Employee {
 	long mobileNo;
 	String emailId;
 	Date dob;
+	String department;
 	
 	public Employee(long empId, String name, long mobileNo, String emailId,String dob) {
 		super();
@@ -76,10 +77,19 @@ public class Employee {
 		this.dob = dob;
 	}
 
+	
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", name=" + name + ", mobileNo=" + mobileNo + ", emailId=" + emailId
-				+ ", dob=" + this.getDobAsString() + "]";
+				+ ", dob=" + this.getDobAsString() + ", department="+department+"]";
 	}
 
 	

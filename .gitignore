@@ -1,0 +1,5 @@
+#### Excluding bin folder ###
+/bin/
+.project
+.classpath
+.settings/

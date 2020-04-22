@@ -2,6 +2,9 @@ package com.karvis.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -77,6 +80,7 @@ public class Employee {
 		this.dob = dob;
 	}
 
+
 	
 	public String getDepartment() {
 		return department;
@@ -89,8 +93,32 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", name=" + name + ", mobileNo=" + mobileNo + ", emailId=" + emailId
-				+ ", dob=" + this.getDobAsString() + ", department="+department+"]";
+				+ ", dob=" + this.getDobAsString() + ", department="+department+", age="+this.getEmployeeAge()+"]";
 	}
+	public int getEmployeeAge() {
+		int age = 0;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		  Date d;
+		try {
+			d = sdf.parse(this.getDobAsString());
+			Calendar c = Calendar.getInstance();
+		  c.setTime(d);
+		  int year = c.get(Calendar.YEAR);
+		  int month = c.get(Calendar.MONTH) + 1;
+		  int date = c.get(Calendar.DATE);
+		  LocalDate l1 = LocalDate.of(year, month, date);
+		  LocalDate now1 = LocalDate.now();
+		  Period diff1 = Period.between(l1, now1);
+		  age = diff1.getYears();
+		  //System.out.println("age:" + diff1.getYears() + "years");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  
+		return age;
+	}
+	
 
 	
 	
